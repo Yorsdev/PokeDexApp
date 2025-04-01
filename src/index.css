@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+/* con este se normalizan ciertos elementos */
+@layer base {
+}
+
+@layer components {
+  .btn {
+    @apply bg-red-500 text-white 
+      py-1.5 px-3 cursor-pointer hover:bg-red-400 
+      transition-colors duration-300 ease-in-out;
+  }
+  .input {
+    @apply bg-white shadow py-1 px-3 outline-0
+    
+  }
+}
+
+@layer utilities {
+}
