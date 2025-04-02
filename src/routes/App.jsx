@@ -4,6 +4,7 @@ import Pokedex from "../App/pokedex/Pokedex";
 import Protected from "./Protected";
 import MainLayout from "../layout/MainLayout";
 import Details from "../App/details/Details";
+import NotFound from "../utils/NotFound";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
         <Route index element={<Pokedex />} />
         <Route path=":name" element={<Details />} />
       </Route>
-      <Route path="*" element={<h2>404 Not Found</h2>} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

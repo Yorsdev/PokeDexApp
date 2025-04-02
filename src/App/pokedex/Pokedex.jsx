@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router';
 import axios from "axios";
 import { useName } from "../../context/nameContext";
 import PokemonsList from "./components/PokemonsList";
@@ -7,6 +8,7 @@ import PokemonCard from "./components/PokemonCard";
 const baseUrl = "https://pokeapi.co/api/v2/pokemon";
 
 function Pokedex() {
+  const navigate = useNavigate();
   const [state] = useName();
   const [pokemons, setPokemons] = useState([]);
   const [filteredPokemons, setFilteredPokemons] = useState([]);
@@ -98,7 +100,10 @@ function Pokedex() {
               Bienvenido {state.name}
             </span>
             , aquí pordrás encontrar tu pokémon favorito
+          <button class='btn2 mt-2 ml-2' onClick={() => navigate('/')}>Cambiar Nombre</button>
           </h2>
+
+          {/* Aquí el boton para cambiar de nombre */}
 
           {/*Aquí va el buscador y el filtro*/}
           <div className="mb-9">

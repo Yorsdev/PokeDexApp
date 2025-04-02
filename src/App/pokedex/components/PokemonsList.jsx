@@ -1,3 +1,4 @@
+import NotFound from "../../../utils/NotFound";
 import PokemonCard from "./PokemonCard";
 
 function PokemonsList({ pokemons }) {
@@ -7,7 +8,7 @@ function PokemonsList({ pokemons }) {
           <PokemonCard key={pokemon.name} url={pokemon.url} />
       ))}
 
-      {pokemons.length === 0 && <p>No hay pokemons</p>}
+      {pokemons.length === 0 && <NotFound />}
     </div>
   );
 }

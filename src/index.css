@@ -8,7 +8,14 @@
   .btn {
     @apply bg-red-500 text-white 
       py-1.5 px-3 cursor-pointer hover:bg-red-400 
-      transition-colors duration-300 ease-in-out;
+      transition-all duration-300 ease-in-out rounded-[3px]
+      hover:-translate-y-0.5;
+  }
+  .btn2 {
+    @apply bg-gray-400 text-white 
+      py-0.5 px-2 cursor-pointer hover:bg-red-400 
+      transition-all duration-300 ease-in-out rounded-[3px]
+      hover:-translate-y-0.5;
   }
   .input {
     @apply bg-white shadow py-1 px-3 outline-0;
