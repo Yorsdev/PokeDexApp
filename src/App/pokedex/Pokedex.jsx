@@ -42,18 +42,21 @@ function Pokedex() {
 
   //Filtra los pokemon por tipo
   useEffect(() => {
-    if(selectedType === 'all') {
-      setFilteredPokemons(pokemons)
-      setSinglePokemon(null)
-      return
+    if (selectedType === "all") {
+      setFilteredPokemons(pokemons);
+      setSinglePokemon(null);
+      return;
     }
-    axios
-      .get("https://pokeapi.co/api/v2/type/" + selectedType)
-      .then((response) => {
-        setFilteredPokemons(response.data.pokemon.map(p => p.pokemon));
-        setSinglePokemon(null);
-      })
-      .catch((error) => console.error(error));
+
+    if (selectedType) {
+      axios
+        .get("https://pokeapi.co/api/v2/type/" + selectedType)
+        .then((response) => {
+          setFilteredPokemons(response.data.pokemon.map((p) => p.pokemon));
+          setSinglePokemon(null);
+        })
+        .catch((error) => console.error(error));
+    }
   }, [selectedType]);
 
   //Filtrar los pokemons en tiempo real
@@ -89,38 +92,44 @@ function Pokedex() {
   return (
     <div>
       <div className="max-w-5xl mx-auto px-4">
-        <h2 className="mb-8">
-          <span className="text-red-500 font-semibold">
-            Bienvenido {state.name}
-          </span>
-          , aquí pordrás encontrar tu pokémon favorito
-        </h2>
+        <div className="flex flex-col items-center">
+          <h2 className="mb-8">
+            <span className="text-red-500 font-semibold">
+              Bienvenido {state.name}
+            </span>
+            , aquí pordrás encontrar tu pokémon favorito
+          </h2>
 
-        {/*Aquí va el buscador y el filtro*/}
-        <div className="mb-9">
-          <input
-            type="text"
-            placeholder="Buscar Pokemon"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="input"
-          />
-          <button className="btn" onClick={searchPokemon}>
-            Buscar
-          </button>
+          {/*Aquí va el buscador y el filtro*/}
+          <div className="mb-9">
+            <input
+              type="text"
+              placeholder="Buscar Pokemon"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="input"
+            />
+            <button className="btn" onClick={searchPokemon}>
+              Buscar
+            </button>
 
-          <select
-            value={selectedType}
-            onChange={(e) => setSelectedType(e.target.value)}
-            className="input ml-4"
-          >
-            <option value="all">All pokémons</option>
-            {types.map((type) => (
-              <option key={type.name} value={type.name} className="capitalize">
-                {type.name}
-              </option>
-            ))}
-          </select>
+            <select
+              value={selectedType}
+              onChange={(e) => setSelectedType(e.target.value)}
+              className="input ml-4"
+            >
+              <option value="all">All pokémons</option>
+              {types.map((type) => (
+                <option
+                  key={type.name}
+                  value={type.name}
+                  className="capitalize"
+                >
+                  {type.name}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
         {/* Aquí va el pokemon  (Renderizado condicional)*/}
