@@ -3,7 +3,7 @@ import PokemonCard from "./PokemonCard";
 
 function PokemonsList({ pokemons }) {
   return (
-    <div className='grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4'>
+    <div className='grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-4'>
       {pokemons.map(pokemon => (
           <PokemonCard key={pokemon.name} url={pokemon.url} />
       ))}

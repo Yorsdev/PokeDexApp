@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router';
+import { useNavigate } from "react-router";
 import axios from "axios";
 import { useName } from "../../context/nameContext";
 import PokemonsList from "./components/PokemonsList";
@@ -17,7 +17,6 @@ function Pokedex() {
   const [search, setSearch] = useState("");
   const [selectedType, setSelectedType] = useState("");
 
-  //Función para cargar siempre los primeros 20
   const getPokemons = async () => {
     axios
       .get(baseUrl + `?limit=150`)
@@ -27,12 +26,10 @@ function Pokedex() {
       .catch((error) => console.error(error));
   };
 
-  //Traer los primeros 150 pokemons
   useEffect(() => {
     getPokemons();
   }, []);
 
-  //Trae la lista de tipos de pokemon
   useEffect(() => {
     axios
       .get("https://pokeapi.co/api/v2/type?limit=21")
@@ -42,7 +39,6 @@ function Pokedex() {
       .catch((error) => console.error(error));
   }, []);
 
-  //Filtra los pokemon por tipo
   useEffect(() => {
     if (selectedType === "all") {
       setFilteredPokemons(pokemons);
@@ -61,7 +57,6 @@ function Pokedex() {
     }
   }, [selectedType]);
 
-  //Filtrar los pokemons en tiempo real
   useEffect(() => {
     if (!search) {
       setFilteredPokemons(pokemons);
@@ -86,7 +81,8 @@ function Pokedex() {
     axios
       .get(baseUrl + "/" + search.toLowerCase())
       .then((response) => {
-        setSinglePokemon(baseUrl + "/" + response.data.name);
+        // baseUrl + "/" + response.data.name
+        setSinglePokemon(response.data);
       })
       .catch((error) => console.error(error));
   };
@@ -100,12 +96,11 @@ function Pokedex() {
               Bienvenido {state.name}
             </span>
             , aquí pordrás encontrar tu pokémon favorito
-          <button class='btn2 mt-2 ml-2' onClick={() => navigate('/')}>Cambiar Nombre</button>
+            <button class="btn2 mt-2 ml-2" onClick={() => navigate("/")}>
+              Cambiar Nombre
+            </button>
           </h2>
 
-          {/* Aquí el boton para cambiar de nombre */}
-
-          {/*Aquí va el buscador y el filtro*/}
           <div className="mb-9">
             <input
               type="text"
@@ -137,14 +132,11 @@ function Pokedex() {
           </div>
         </div>
 
-        {/* Aquí va el pokemon  (Renderizado condicional)*/}
-
         {singlePokemon ? (
-          <PokemonCard url={singlePokemon} />
+          <PokemonCard url={baseUrl + "/" + singlePokemon.name} />
         ) : (
           <PokemonsList pokemons={filteredPokemons} />
         )}
-        {/*Arriba va la lista de pokemones*/}
       </div>
     </div>
   );

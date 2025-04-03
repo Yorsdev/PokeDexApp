@@ -1,13 +1,18 @@
-import { Outlet } from "react-router"
+import { Outlet, useLocation } from "react-router"
 
 function MainLayout() {
+const location = useLocation();
+const isDetailsPage = location.pathname.startsWith('/pokedex/')
+
   return (
     <div>
-      <div className="bg-black w-full h-20 mt-auto mb-6">
-        <div className="bg-red-600 w-full h-12"></div>
+      {!isDetailsPage &&(
+        <div className="bg-black w-full h-20 mt-auto">
+          <div className="bg-red-600 w-full h-12"></div>
+        </div>
+      )}
+        <Outlet />
       </div>
-      <Outlet />
-    </div>
   )
 }
 
