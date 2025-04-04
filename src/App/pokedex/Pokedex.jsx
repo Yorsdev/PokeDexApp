@@ -88,15 +88,15 @@ function Pokedex() {
   };
 
   return (
-    <div>
-      <div className="max-w-5xl mx-auto px-4">
+    <div className="bg-gray-500">
+      <div className="max-w-5xl mx-auto px-4 z-20">
         <div className="flex flex-col items-center">
-          <h2 className="mb-8">
+          <h2 className="m-8">
             <span className="text-red-500 font-semibold">
               Bienvenido {state.name}
             </span>
             , aquí pordrás encontrar tu pokémon favorito
-            <button class="btn2 mt-2 ml-2" onClick={() => navigate("/")}>
+            <button class="btn2 mt-2 ml-4 justify-center" onClick={() => navigate("/")}>
               Cambiar Nombre
             </button>
           </h2>

@@ -29,7 +29,7 @@ function PokemonCard({ url }) {
         />
       </div>
 
-      <div className="p-4 text-center">
+      <div className="bg-gray-200 p-4 text-center">
         <h2 className="capitalize text-2xl font-semibold">{pokemon.name}</h2>
         <p className="capitalize">
           {pokemon.types?.map((p) => p.type.name).join(" / ")}

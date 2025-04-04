@@ -1,7 +1,11 @@
+
+
 @import "tailwindcss";
+
 
 /* con este se normalizan ciertos elementos */
 @layer base {
+  
 }
 
 @layer components {
@@ -12,10 +16,10 @@
       hover:-translate-y-0.5;
   }
   .btn2 {
-    @apply bg-gray-400 text-white 
-      py-0.5 px-2 cursor-pointer hover:bg-red-400 
+    @apply bg-black text-white 
+      py-0.5 px-2 cursor-pointer hover:bg-red-600 
       transition-all duration-300 ease-in-out rounded-[3px]
-      hover:-translate-y-0.5;
+      hover:-translate-y-0.5 border-s-amber-200;
   }
   .input {
     @apply bg-white shadow py-1 px-3 outline-0;

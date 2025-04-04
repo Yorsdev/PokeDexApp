@@ -19,10 +19,11 @@ function NameForm() {
 
   return (
     <div>
+
       <input
         type="text"
-        className="input"
-        placeholder="Tu nombre"
+        className="input bg-black text-white mb-4"
+        placeholder="Ingresa tu nombre"
         ref={inputRef}
         onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
       />
