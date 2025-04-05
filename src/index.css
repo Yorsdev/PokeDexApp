@@ -16,8 +16,8 @@
       hover:-translate-y-0.5;
   }
   .btn2 {
-    @apply bg-black text-white 
-      py-0.5 px-2 cursor-pointer hover:bg-red-600 
+    @apply bg-gray-600 text-white 
+      py-0.5 px-2 cursor-pointer hover:bg-gray-500 
       transition-all duration-300 ease-in-out rounded-[3px]
       hover:-translate-y-0.5 border-s-amber-200;
   }
@@ -35,6 +35,8 @@
         #7c3f4c 186.11%
       )
       1;
+      border-radius: 20px;
+      overflow: hidden;
   }
   .type-border--fighting {
     border-image: linear-gradient(

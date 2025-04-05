@@ -88,14 +88,13 @@ function Pokedex() {
   };
 
   return (
-    <div className="bg-gray-500">
+    <div className="bg-gray-900">
       <div className="max-w-5xl mx-auto px-4 z-20">
         <div className="flex flex-col items-center">
-          <h2 className="m-8">
+          <h2 className="m-8 text-2xl text-white">
             <span className="text-red-500 font-semibold">
-              Bienvenido {state.name}
-            </span>
-            , aquí pordrás encontrar tu pokémon favorito
+              Bienvenido {state.name},
+            </span> aquí pordrás encontrar tu pokémon favorito
             <button class="btn2 mt-2 ml-4 justify-center" onClick={() => navigate("/")}>
               Cambiar Nombre
             </button>
@@ -107,7 +106,7 @@ function Pokedex() {
               placeholder="Buscar Pokemon"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="input"
+              className="input bg-gray-500 text text-white"
             />
             <button className="btn" onClick={searchPokemon}>
               Buscar
@@ -116,7 +115,7 @@ function Pokedex() {
             <select
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)}
-              className="input ml-4"
+              className="input ml-4 bg-gray-500 text text-white"
             >
               <option value="all">All pokémons</option>
               {types.map((type) => (
